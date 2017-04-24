@@ -1,0 +1,2 @@
+Import-Module activedirectory
+Get-ADUser -Filter * -SearchBase ‘ou=TestOU,dc=Test,dc=com’ -Properties userPrincipalName | foreach { Set-ADUser $_ -UserPrincipalName (“{0}@{1}” -f $_.SamAccountName,”test2.com”)}
